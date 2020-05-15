@@ -17,6 +17,25 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/login', function(){
-    return view('login');
+// Parametros opcionais com parametro opicional
+Route::get('/produtos/{idProduct?}', function ($idProduct = '') {
+    return "Produtos: {$idProduct}";
 });
+
+/* // Parametros opcionais com parametro obrigatorio
+Route::get('/produtos/{idProduct}', function ($idProduct) {
+    return "Produtos: {$idProduct}";
+});
+*/
+
+/* // url dinamica + prefixo
+Route::get('/categorias/{flag}/posts', function ($flag) {
+    return "posts da categoria: {$flag}";
+});
+*/
+
+/* // url dinâmica
+Route::get('/categorias/{flag}', function ($flag) {
+    return "produtos da categoria: {$flag}";
+});
+*/
