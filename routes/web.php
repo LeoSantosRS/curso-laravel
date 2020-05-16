@@ -16,11 +16,28 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+// Redirect e View:
 
-// Parametros opcionais com parametro opicional
+/*// redirect linha unica
+Route::redirect('/redirect1', 'redirect2');
+
+// redirect utilizando função call back
+Route::get('/redirect1', function () {
+    return redirect('/redirect2');
+});
+
+Route::get('/redirect2', function () {
+    return 'redirect2';
+});
+*/
+
+// url dinamica + parametros opcionais:
+
+/* // Parametros opcionais com parametro opicional
 Route::get('/produtos/{idProduct?}', function ($idProduct = '') {
     return "Produtos: {$idProduct}";
 });
+*/
 
 /* // Parametros opcionais com parametro obrigatorio
 Route::get('/produtos/{idProduct}', function ($idProduct) {
