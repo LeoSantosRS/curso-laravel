@@ -16,6 +16,15 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+// Rotas Nomeadas:
+Route::get('/name-url', function () {
+    return 'Hey Hey Hey';
+})->name('url.name');
+
+Route::get('redirect3', function () {
+    return redirect()->route('url.name');
+});
+
 // Redirect e View:
 
 /*// redirect linha unica
