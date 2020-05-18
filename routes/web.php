@@ -21,14 +21,30 @@ Route::get('/', function () {
 
 // forma basica:
 
+// rota login que servira de exemplo em nossa demonstração
 Route::get('/login', function () {
     return 'login';
 })->name('login');
 
-Route::get('/admin/dashboard', function () {
-    return 'Home Admin';
-})->middleware(['auth']); // controle de acesso no laravel
-// utilizando mais de um: ->middleware(['auth'],['exemplo']);
+// abaixo temos uma forma de fazer um grupo
+Route::middleware(['auth'])->group(function (){
+    Route::get('/admin/dashboard', function () {
+        return 'Home Admin';
+    });
+    Route::get('/admin/financeiro', function () {
+        return 'financeiro Admin';
+    });
+});
+// abaixo temos outra forma de fazer um grupo
+/*Route::group(['middleware' => ['auth']], function () {
+    Route::get('/admin/dashboard', function () {
+        return 'Home Admin';
+    });
+    Route::get('/admin/financeiro', function () {
+        return 'financeiro Admin';
+    });
+});*/
+
 
 /* // Rotas Nomeadas:
 Route::get('/name-url', function () {
