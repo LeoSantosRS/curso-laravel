@@ -39,6 +39,7 @@ Route::middleware(['auth'])->group(function (){
         Route::get('/produtos', function () {
             return 'produtos Admin';
         });
+        Route::get('/','Admin/TesteController@teste');
     });   
 });
 
