@@ -28,13 +28,19 @@ Route::get('/login', function () {
 
 // abaixo temos uma forma de fazer um grupo
 Route::middleware(['auth'])->group(function (){
-    Route::get('/admin/dashboard', function () {
-        return 'Home Admin';
-    });
-    Route::get('/admin/financeiro', function () {
-        return 'financeiro Admin';
-    });
+    Route::prefix('admin')->group(function(){
+        Route::get('/admin/dashboard', function () {
+            return 'Home Admin';
+        });
+        Route::get('/admin/financeiro', function () {
+            return 'financeiro Admin';
+        });
+        Route::get('/admin/produtos', function () {
+            return 'produtos Admin';
+        });
+    });   
 });
+
 // abaixo temos outra forma de fazer um grupo
 /*Route::group(['middleware' => ['auth']], function () {
     Route::get('/admin/dashboard', function () {
@@ -42,6 +48,9 @@ Route::middleware(['auth'])->group(function (){
     });
     Route::get('/admin/financeiro', function () {
         return 'financeiro Admin';
+    });
+    Route::get('/admin/produtos', function () {
+        return 'produtos Admin';
     });
 });*/
 
