@@ -16,7 +16,21 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-// Rotas Nomeadas:
+
+// Grupos de rotas no laravel
+
+// forma basica:
+
+Route::get('/login', function () {
+    return 'login';
+})->name('login');
+
+Route::get('/admin/dashboard', function () {
+    return 'Home Admin';
+})->middleware(['auth']); // controle de acesso no laravel
+// utilizando mais de um: ->middleware(['auth'],['exemplo']);
+
+/* // Rotas Nomeadas:
 Route::get('/name-url', function () {
     return 'Hey Hey Hey';
 })->name('url.name');
@@ -24,6 +38,7 @@ Route::get('/name-url', function () {
 Route::get('redirect3', function () {
     return redirect()->route('url.name');
 });
+*/
 
 // Redirect e View:
 
