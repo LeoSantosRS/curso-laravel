@@ -26,20 +26,18 @@ Route::get('/login', function () {
     return 'login';
 })->name('login');
 
-// abaixo temos uma forma de fazer um grupo
+// abaixo temos um grupo de rootas estruturado 
 Route::middleware(['auth'])->group(function (){
     // agora criamos um grupo com o prefix admin
     Route::prefix('admin')->group(function(){
-        Route::get('/dashboard', function () {
-            return 'Home Admin';
-        });
-        Route::get('/financeiro', function () {
-            return 'financeiro Admin';
-        });
-        Route::get('/produtos', function () {
-            return 'produtos Admin';
-        });
-        Route::get('/','Admin/TesteController@teste');
+        Route::namespace('Admin')->group(function(){
+            Route::get('dashboard','TesteController@teste')->name('admin.dashboard');
+            Route::get('financeiro','TesteController@teste')->name('admin.financeiro');
+            Route::get('produtos','TesteController@teste')->name('admin.produtos');
+            Route::get('/', function () {
+                return redirect()->route('admin.dashboard');
+            });
+        });        
     });   
 });
 
