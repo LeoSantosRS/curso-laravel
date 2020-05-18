@@ -31,12 +31,14 @@ Route::middleware(['auth'])->group(function (){
     // agora criamos um grupo com o prefix admin
     Route::prefix('admin')->group(function(){
         Route::namespace('Admin')->group(function(){
-            Route::get('dashboard','TesteController@teste')->name('admin.dashboard');
-            Route::get('financeiro','TesteController@teste')->name('admin.financeiro');
-            Route::get('produtos','TesteController@teste')->name('admin.produtos');
-            Route::get('/', function () {
-                return redirect()->route('admin.dashboard');
-            });
+            Route::name('admin.')->group(function(){
+                Route::get('dashboard','TesteController@teste')->name('dashboard');
+                Route::get('financeiro','TesteController@teste')->name('financeiro');
+                Route::get('produtos','TesteController@teste')->name('produtos');
+                Route::get('/', function () {
+                    return redirect()->route('dashboard');
+                });
+            });           
         });        
     });   
 });
