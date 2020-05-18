@@ -28,14 +28,15 @@ Route::get('/login', function () {
 
 // abaixo temos uma forma de fazer um grupo
 Route::middleware(['auth'])->group(function (){
+    // agora criamos um grupo com o prefix admin
     Route::prefix('admin')->group(function(){
-        Route::get('/admin/dashboard', function () {
+        Route::get('/dashboard', function () {
             return 'Home Admin';
         });
-        Route::get('/admin/financeiro', function () {
+        Route::get('/financeiro', function () {
             return 'financeiro Admin';
         });
-        Route::get('/admin/produtos', function () {
+        Route::get('/produtos', function () {
             return 'produtos Admin';
         });
     });   
